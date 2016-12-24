@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+
+
+  <html class="light page-post">
+
+
+<head>
+  <meta charset="utf-8">
+  
+  <title>R语言的基本数据类型之二：矩阵和数组、列表、数据框 | AtwoodDuan&#39;s blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="R," />
+  
+
+  <meta name="description" content="R语言的基本数据类型之二：矩阵和数组、列表、数据框矩阵和数组
+“&amp;amp;”和“&amp;amp;&amp;amp;”。前者是向量逻辑“与”运算，后者是用于if语句的标量逻辑“与”运算。
+
+使用drop可以防止意外降级。
+  12345678910111213&amp;gt; z &amp;lt;- matrix(1:10, 5, 2)&amp;gt; z     [,1] [,2][1,]    1    6[2,]    2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="R语言的基本数据类型之二：矩阵和数组、列表、数据框">
+<meta property="og:url" content="http://atwoodduan.github.io/2016/09/30/R语言基本数据类型之二：矩阵和数组、列表、数据框/index.html">
+<meta property="og:site_name" content="AtwoodDuan's blog">
+<meta property="og:description" content="R语言的基本数据类型之二：矩阵和数组、列表、数据框矩阵和数组
+“&amp;amp;”和“&amp;amp;&amp;amp;”。前者是向量逻辑“与”运算，后者是用于if语句的标量逻辑“与”运算。
+
+使用drop可以防止意外降级。
+  12345678910111213&amp;gt; z &amp;lt;- matrix(1:10, 5, 2)&amp;gt; z     [,1] [,2][1,]    1    6[2,]    2">
+<meta property="og:updated_time" content="2016-12-24T02:59:16.324Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="R语言的基本数据类型之二：矩阵和数组、列表、数据框">
+<meta name="twitter:description" content="R语言的基本数据类型之二：矩阵和数组、列表、数据框矩阵和数组
+“&amp;amp;”和“&amp;amp;&amp;amp;”。前者是向量逻辑“与”运算，后者是用于if语句的标量逻辑“与”运算。
+
+使用drop可以防止意外降级。
+  12345678910111213&amp;gt; z &amp;lt;- matrix(1:10, 5, 2)&amp;gt; z     [,1] [,2][1,]    1    6[2,]    2">
+
+  
+
+  
+    <link rel="icon" href="/images/avatar.jpg">
+  
+
+  <link href="/css/styles.css?v=d671a41f" rel="stylesheet">
+
+
+  
+    <link rel="stylesheet" href="/css/personal-style.css">
+  
+
+  
+
+  
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?57e94d016e201fba3603a8a2b0263af0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  
+</head>
+
+<body>
+
+
+  
+    <span id="toolbox-mobile" class="toolbox-mobile">盒子</span>
+  
+
+  <div class="post-header CENTER">
+   
+  <div class="toolbox">
+    <a class="toolbox-entry" href="/">
+      <span class="toolbox-entry-text">盒子</span>
+      <i class="icon-angle-down"></i>
+      <i class="icon-home"></i>
+    </a>
+    <ul class="list-toolbox">
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/archives/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            博客
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/category/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            分类
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/tag/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            标签
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/link/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            友链
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/about/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            关于
+          </a>
+        </li>
+      
+        <li class="item-toolbox">
+          <a
+            class="CIRCLE"
+            href="/search/"
+            rel="noopener noreferrer"
+            target="_self"
+            >
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+
+
+</div>
+
+
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#R语言的基本数据类型之二：矩阵和数组、列表、数据框"><span class="toc-text">R语言的基本数据类型之二：矩阵和数组、列表、数据框</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#矩阵和数组"><span class="toc-text">矩阵和数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#列表"><span class="toc-text">列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据框"><span class="toc-text">数据框</span></a></li></ol></li></ol>
+  </div>
+
+
+
+<div class="content content-post CENTER">
+   <article id="post-R语言基本数据类型之二：矩阵和数组、列表、数据框" class="article article-type-post" itemprop="blogPost">
+  <header class="article-header">
+    <h1 class="post-title">R语言的基本数据类型之二：矩阵和数组、列表、数据框</h1>
+
+    <div class="article-meta">
+      <span>
+        <i class="icon-calendar"></i>
+        <span>2016.09.30</span>
+      </span>
+
+      
+        <span class="article-author">
+          <i class="icon-user"></i>
+          <span>AtwoodDuan</span>
+        </span>
+      
+
+      
+  <span class="article-category">
+    <i class="icon-list"></i>
+    <a class="article-category-link" href="/categories/R语言学习笔记/">R语言学习笔记</a>
+  </span>
+
+
+
+      
+        <span>
+          <i class="icon-comment"></i>
+          <a href="http://atwoodduan.github.io/2016/09/30/R语言基本数据类型之二：矩阵和数组、列表、数据框/#disqus_thread"></a>
+        </span>
+      
+
+      
+      <i class="fa fa-eye"></i> 
+        <span id="busuanzi_container_page_pv">
+           &nbsp热度 <span id="busuanzi_value_page_pv">
+           <i class="fa fa-spinner fa-spin"></i></span>℃
+        </span>
+      
+
+      
+      
+    </div>
+  </header>
+
+  <div class="article-content">
+    
+      <h1 id="R语言的基本数据类型之二：矩阵和数组、列表、数据框"><a href="#R语言的基本数据类型之二：矩阵和数组、列表、数据框" class="headerlink" title="R语言的基本数据类型之二：矩阵和数组、列表、数据框"></a>R语言的基本数据类型之二：矩阵和数组、列表、数据框</h1><h2 id="矩阵和数组"><a href="#矩阵和数组" class="headerlink" title="矩阵和数组"></a>矩阵和数组</h2><ul>
+<li><p>“&amp;”和“&amp;&amp;”。前者是向量逻辑“与”运算，后者是用于if语句的标量逻辑“与”运算。</p>
+</li>
+<li><p>使用drop可以防止意外降级。</p>
+  <figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&gt; z &lt;- matrix(<span class="number">1</span>:<span class="number">10</span>, <span class="number">5</span>, <span class="number">2</span>)</div><div class="line">&gt; z</div><div class="line">     [,<span class="number">1</span>] [,<span class="number">2</span>]</div><div class="line">[<span class="number">1</span>,]    <span class="number">1</span>    <span class="number">6</span></div><div class="line">[<span class="number">2</span>,]    <span class="number">2</span>    <span class="number">7</span></div><div class="line">[<span class="number">3</span>,]    <span class="number">3</span>    <span class="number">8</span></div><div class="line">[<span class="number">4</span>,]    <span class="number">4</span>    <span class="number">9</span></div><div class="line">[<span class="number">5</span>,]    <span class="number">5</span>   <span class="number">10</span></div><div class="line">&gt; r &lt;- z[<span class="number">2</span>,]</div><div class="line">&gt; r &lt;- z[<span class="number">2</span>,,drop = <span class="literal">F</span>]</div><div class="line">&gt; r</div><div class="line">     [,<span class="number">1</span>] [,<span class="number">2</span>]</div><div class="line">[<span class="number">1</span>,]    <span class="number">2</span>    <span class="number">7</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>矩阵是2二维的数组。数组是有维度的向量。</p>
+</li>
+</ul>
+<ul>
+<li><p>apply()函数。apply(m,dimcode,f,fargs)<br>m，是一个矩阵。dimcode，是维度编号，若取值为1代表对每一行应用函数，若取值为2代表对每一列应用函数。f，是应用在行或列上的函数。fargs，是f的可选参数集。<br>apply()函数的默认方式。如果所调用的函数返回的是一个包含k个元素的向量，那apply()的结果就有k行。</p>
+</li>
+<li><p>向量不能更改，只能通过重新赋值来达到增加元素的目的。矩阵和数组也是如此。</p>
+  <figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">x[<span class="number">2</span>]&lt;-<span class="number">12</span> <span class="comment">#这样的操作也是一个重新赋值x的过程</span></div><div class="line">cbind(c(<span class="number">1</span>:<span class="number">100</span>),c(<span class="number">1</span>:<span class="number">100</span>))</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>因此在循环中每次往矩阵中添加一行（列），最后矩阵会变成一个大矩阵，这种做法是<br>不可取的，最好一开始就定义好一个大矩阵。这个事先定义的矩阵是空的，但是在循环过程<br>中逐行或列进行赋值，这种做法避免了循环过程中每次进行耗时的矩阵内存分配。</p>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><ul>
+<li><p>从技术上讲，列表就是元素是向量或者列表的有序表。之前我们接触过的普通向量的元素都为单一基本元素：数值（numeric）、字符（character）、逻辑值（logical）、复数型（complex）。而列表的元素是不同的向量。</p>
+</li>
+<li><p>使用List()创建列表。</p>
+</li>
+<li><p>单中括号返回一个子列表，双中括号提取列表一个组件，返回值是组件本身的类型。</p>
+  <figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">&gt; l &lt;- list(name=<span class="string">"Joe"</span>, salary=<span class="number">55000</span>, union=<span class="literal">T</span>)</div><div class="line">&gt; l</div><div class="line">$name</div><div class="line">[<span class="number">1</span>] <span class="string">"Joe"</span></div><div class="line"></div><div class="line">$salary</div><div class="line">[<span class="number">1</span>] <span class="number">55000</span></div><div class="line"></div><div class="line">$union</div><div class="line">[<span class="number">1</span>] <span class="literal">TRUE</span></div><div class="line"></div><div class="line">&gt; l[<span class="number">1</span>]</div><div class="line">$name</div><div class="line">[<span class="number">1</span>] <span class="string">"Joe"</span></div><div class="line"></div><div class="line">&gt; <span class="number">1</span>[[<span class="number">1</span>]]</div><div class="line">[<span class="number">1</span>] <span class="number">1</span></div><div class="line">&gt; a &lt;- l[<span class="number">1</span>]</div><div class="line">&gt; class(a)</div><div class="line">[<span class="number">1</span>] <span class="string">"list"</span></div><div class="line">&gt; mode(a)</div><div class="line">[<span class="number">1</span>] <span class="string">"list"</span></div><div class="line">&gt; b &lt;- l[[<span class="number">2</span>]]</div><div class="line">&gt; class(b)</div><div class="line">[<span class="number">1</span>] <span class="string">"numeric"</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>列表可以添加组件。</p>
+</li>
+<li><p>lapply对列表的每个组件执行某一个函数。并返回另一列表。</p>
+</li>
+<li><p>列表的组件也可以是列表<br>  举一个更复杂的例子</p>
+  <figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&gt; l &lt;- list(name=<span class="string">"Joe"</span>, salary=<span class="number">55000</span>, union=<span class="literal">T</span>)</div><div class="line">&gt; m &lt;- list(name=<span class="string">"Jack"</span>, salary=<span class="number">3300</span>, union=<span class="literal">F</span>)</div><div class="line">&gt; ml &lt;- list(l=l, m=m)</div><div class="line">&gt; ml</div><div class="line">$l</div><div class="line">$l$name</div><div class="line">[<span class="number">1</span>] <span class="string">"Joe"</span></div><div class="line"></div><div class="line">$l$salary</div><div class="line">[<span class="number">1</span>] <span class="number">55000</span></div><div class="line"></div><div class="line">$l$union</div><div class="line">[<span class="number">1</span>] <span class="literal">TRUE</span></div><div class="line"></div><div class="line"></div><div class="line">$m</div><div class="line">$m$name</div><div class="line">[<span class="number">1</span>] <span class="string">"Jack"</span></div><div class="line"></div><div class="line">$m$salary</div><div class="line">[<span class="number">1</span>] <span class="number">3300</span></div><div class="line"></div><div class="line">$m$union</div><div class="line">[<span class="number">1</span>] <span class="literal">FALSE</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="数据框"><a href="#数据框" class="headerlink" title="数据框"></a>数据框</h2><ul>
+<li>使用data.frame()创建数据框。  <figure class="highlight r"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&gt; kids &lt;- c(<span class="string">"Jack"</span>, <span class="string">"Jill"</span>)</div><div class="line">&gt; ages &lt;- c(<span class="number">12</span>, <span class="number">10</span>)</div><div class="line">&gt; d &lt;- data.frame(kids, ages)</div><div class="line">&gt; d</div><div class="line">  kids ages</div><div class="line"><span class="number">1</span> Jack   <span class="number">12</span></div><div class="line"><span class="number">2</span> Jill   <span class="number">10</span></div><div class="line">&gt; d$kids</div><div class="line">[<span class="number">1</span>] Jack Jill</div><div class="line">Levels: Jack Jill</div><div class="line">&gt; mode(d$kids)</div><div class="line">[<span class="number">1</span>] <span class="string">"numeric"</span></div><div class="line"></div><div class="line">&gt; d &lt;- data.frame(kids, ages, stringsAsFactors = <span class="literal">F</span>)</div><div class="line">&gt; d$kids</div><div class="line">[<span class="number">1</span>] <span class="string">"Jack"</span> <span class="string">"Jill"</span></div><div class="line">&gt; mode(d$kids)</div><div class="line">[<span class="number">1</span>] <span class="string">"character"</span></div></pre></td></tr></table></figure></li>
+</ul>
+
+    
+  </div>
+</article>
+
+</div>
+
+
+  <div class="text-center donation">
+    <div class="inner-donation">
+      <span class="btn-donation">支持一下</span>
+      <div class="donation-body">
+        <div class="tip text-center">扫一扫，支持forsigner</div>
+        <ul class="theme.donation.items.length">
+        
+          <li class="item">
+            <img src="/images/qr-wechat.png" alt="">
+          </li>
+        
+          <li class="item">
+            <img src="/images/qr-alipay.png" alt="">
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <a id="backTop" class="back-top">
+    <i class="icon-angle-up"></i>
+  </a>
+
+
+
+
+  <div class="modal" id="modal">
+  <span id="cover" class="cover hide"></span>
+  <div id="modal-dialog" class="modal-dialog hide-dialog">
+    <div class="modal-header">
+      <span id="close" class="btn-close">关闭</span>
+    </div>
+    <hr>
+    <div class="modal-body">
+      <ul class="list-toolbox">
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/archives/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              博客
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/category/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              分类
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/tag/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              标签
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/link/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              友链
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/about/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              关于
+            </a>
+          </li>
+        
+          <li class="item-toolbox">
+            <a
+              class="CIRCLE"
+              href="/search/"
+              rel="noopener noreferrer"
+              target="_self"
+              >
+              搜索
+            </a>
+          </li>
+        
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+      <div class="fexo-comments comments-post">
+    
+  <section class="disqus-comments">
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+  </section>
+
+  <script>
+    var disqus_shortname = 'forsigner';
+    
+    var disqus_url = 'http://atwoodduan.github.io/2016/09/30/R语言基本数据类型之二：矩阵和数组、列表、数据框/';
+    
+    (function(){
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+
+  <script id="dsq-count-scr" src="//forsigner.disqus.com/count.js" async></script>
+
+
+
+    
+
+
+
+
+  </div>
+
+  
+
+  <script type="text/javascript">
+  function loadScript(url, callback) {
+    var script = document.createElement('script')
+    script.type = 'text/javascript';
+
+    if (script.readyState) { //IE
+      script.onreadystatechange = function() {
+        if (script.readyState == 'loaded' ||
+          script.readyState == 'complete') {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else { //Others
+      script.onload = function() {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
+  }
+
+  window.onload = function() {
+    loadScript('/js/bundle.js?235683', function() {
+      // load success
+    });
+  }
+</script>
+
+</body>
+</html>
